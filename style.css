@@ -111,34 +111,155 @@ nav button:hover {
   text-decoration: none;
 }
 
-/* Case Study Layout */
+/* --- CASE STUDY SPECIFIC STYLES --- */
+
+/* Adjust max-width for case study content to allow larger images */
 .case-study {
-  max-width: 800px;
+  max-width: 900px; /* Increased max-width to allow images to be wider */
   margin: 4rem auto;
   padding: 0 1rem;
 }
-.case-study img {
+
+/* Remove this specific image width rule for .case-study img,
+   as we'll control image width through .story-block img instead
+   to ensure they span full width in their new column layout. */
+/* .case-study img {
   width: 100%;
   max-width: 360px;
   height: auto;
   border-radius: 8px;
   margin-bottom: 1rem;
-}
+} */
+
+/* --- Story Block Layout (Single Column) --- */
 .story-block {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  margin: 3rem 0;
-  align-items: flex-start;
-  flex-wrap: wrap;
+    display: flex;             /* Makes the children flex items */
+    flex-direction: column;    /* Stacks children vertically */
+    align-items: center;       /* Centers items horizontally within the column */
+    gap: 20px;                 /* Adds space between the image and text */
+    margin: 3rem auto;         /* Center the block and add vertical spacing */
+    max-width: 720px;          /* Restrict width of the content inside story block */
 }
+
+/* Overwrite previous .story-block.reverse to ensure it also stacks vertically */
 .story-block.reverse {
-  flex-direction: row-reverse;
+    flex-direction: column; /* Still stack vertically */
 }
-.story-block div {
-  flex: 1;
-  min-width: 280px;
+
+/* Styling for the figure element wrapping images and captions */
+.story-block figure {
+    margin: 0;                 /* Remove default browser margin for figure */
+    padding: 0;                /* Remove default browser padding for figure */
+    max-width: 100%;           /* Ensure figure container itself doesn't overflow */
+    width: 100%;               /* Make figure take full available width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;       /* Center image and caption within the figure */
 }
+
+/* Styling for images within story blocks */
+.story-block img {
+    max-width: 100%;           /* Ensures image doesn't overflow its container */
+    height: auto;              /* Maintains aspect ratio */
+    display: block;            /* Removes any extra space below images */
+    border: 1px solid var(--border-color); /* Subtle border for images */
+    border-radius: 8px;        /* Slightly rounded corners */
+    cursor: zoom-in;           /* Indicates images are clickable for zoom */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Optional: Make images slightly scale on hover to hint at clickability */
+.story-block img:hover {
+    transform: scale(1.01);
+}
+
+/* Styling for the text content div within story blocks */
+.story-block div { /* This targets the text content wrapper */
+    flex: 1; /* Allows the text content to grow and shrink */
+    max-width: 100%; /* Ensures text doesn't push out */
+}
+
+/* --- Image Caption Styling (for images within story blocks) --- */
+.image-caption {
+    font-size: 0.85em;         /* Smaller font size for captions */
+    color: var(--text-color-light); /* Lighter text color for captions */
+    text-align: center;        /* Center align captions */
+    margin-top: 10px;          /* Space above caption */
+    max-width: 100%;           /* Ensures caption wraps if long */
+    padding: 0 10px;           /* Add some horizontal padding */
+}
+
+
+/* --- Modal/Lightbox Styling (for image zoom) --- */
+.modal {
+    display: none;             /* Hidden by default */
+    position: fixed;           /* Stay in place */
+    z-index: 1000;             /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;               /* Full width */
+    height: 100%;              /* Full height */
+    overflow: auto;            /* Enable scroll if zoomed image is too big for screen */
+    background-color: rgba(0, 0, 0, 0.9); /* Dark overlay */
+    justify-content: center;   /* Center content horizontally when display:flex */
+    align-items: center;       /* Center content vertically when display:flex */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;           /* Max width of the image inside the modal */
+    max-height: 90%;          /* Max height of the image inside the modal */
+    object-fit: contain;      /* Ensures image fits within bounds without cropping */
+}
+
+.modal-caption {
+    margin-top: 10px;
+    display: block;
+    width: 80%;               /* Width of the caption */
+    max-width: 700px;         /* Max width of the caption for readability */
+    text-align: center;
+    color: #ccc;              /* Lighter text color for modal caption */
+    padding: 8px 0;
+    font-size: 1em;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Optional: Add a subtle animation for modal content */
+.modal-content, .modal-caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Reduce whitespace after an h2 before the first story-block */
+.story h2 + .story-block {
+    margin-top: 0.1rem; /* Adjust this value as needed: 1rem, 1.25rem, etc. */
+}
+
+/* --- END CASE STUDY SPECIFIC STYLES --- */
+
 
 /* Result icons in lists */
 .result ul {
@@ -182,12 +303,19 @@ nav button:hover {
   outline-offset: 4px;
 }
 
+/* --- CSS additions/modifications to style.css --- */
+
 /* Navigation Buttons */
 .case-nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between; /* This will put Previous on left, Next on right */
   margin-top: 3rem;
+  /* Add flex-wrap and gap to handle wrapping elegantly on smaller screens */
+  flex-wrap: wrap;
+  gap: 1rem; /* Space between buttons when they wrap or are side-by-side */
 }
+
+/* No change needed for .button itself */
 .button {
   display: inline-block;
   padding: 0.6rem 1.2rem;
@@ -203,6 +331,34 @@ nav button:hover {
   background: #333;
 }
 
+
+/* Responsive Tweaks */
+@media (max-width: 600px) {
+  .breadcrumb,
+  .case-nav {
+    flex-direction: column;
+    align-items: flex-start; /* Keeps them aligned to the left when stacked */
+  }
+
+  .case-nav .button { /* Target buttons specifically within case-nav for full width */
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Specific ordering for mobile: Next on top, Previous on bottom */
+  .case-nav .next {
+    order: 1; /* Puts the "Next" button first */
+  }
+
+  .case-nav .previous {
+    order: 2; /* Puts the "Previous" button second */
+  }
+
+  /* Add margin between stacked buttons if needed, currently handled by gap */
+  .case-nav .next + .previous {
+      margin-top: 1rem; /* Adjust if the gap isn't enough on stacked elements */
+  }
+}
 /* Dark Theme */
 body.dark {
   background-color: #111;
@@ -255,28 +411,29 @@ footer {
   }
 }
 
-/*For images*/
+/* For images: Original .image-with-desc, likely for your 'Approach' section */
+/* This section is separate from the .story-block styling to keep concerns separate. */
 .image-with-desc {
-  display: inline-block;            /* keep image and desc together inline */
-  max-width: 100%;                  /* responsive */
-  margin: 2em 2.5em;                /* chill padding around image */
-  vertical-align: middle;           /* align nicely with text */
-  text-align: center;               /* center desc relative to image */
+  display: inline-block;             /* keep image and desc together inline */
+  max-width: 100%;                   /* responsive */
+  margin: 2em 2.5em;                 /* chill padding around image */
+  vertical-align: middle;            /* align nicely with text */
+  text-align: center;                /* center desc relative to image */
 }
 
 .image-with-desc img {
   max-width: 100%;
   height: auto;
-  border-radius: 4px;               /* subtle rounding for polish */
+  border-radius: 4px;                /* subtle rounding for polish */
   outline: none;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);  /* slight depth */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* slight depth */
 }
 
 .image-with-desc figcaption {
   margin-top: 0.4em;
-  font-size: 0.875rem;              /* smaller than body text */
-  color: #444444;                   /* dark gray, not pure black */
+  font-size: 0.875rem;               /* smaller than body text */
+  color: #444444;                    /* dark gray, not pure black */
   line-height: 1.3;
   max-width: 100%;
-  user-select: text;                /* allow copy */
+  user-select: text;                 /* allow copy */
 }
