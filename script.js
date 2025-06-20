@@ -1,81 +1,89 @@
 // script.js
 
-// Light/Dark mode toggle with ARIA updates and persistence
-const toggleBtn = document.getElementById('toggleTheme'); // This might be null on some pages
+document.addEventListener('DOMContentLoaded', () => {
 
-// Wrap the theme logic in a check to ensure toggleBtn exists
-if (toggleBtn) { // Only run this code if the toggleBtn element exists
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    const currentTheme = localStorage.getItem('theme');
+    // --- Theme Toggle Logic ---
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
 
-    function applyTheme(theme) {
-        if (theme === 'dark') {
-            document.body.classList.add('dark');
-            toggleBtn.setAttribute('aria-pressed', 'true');
-        } else {
-            document.body.classList.remove('dark');
-            toggleBtn.setAttribute('aria-pressed', 'false');
+    // Ensure the theme toggle button exists on the page before attaching listeners
+    if (themeToggle) {
+        // Check for saved theme preference or system preference
+        const savedTheme = localStorage.getItem('theme'); // Will be 'dark' or 'light'
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Function to apply the theme class and update the button icon
+        function applyTheme(themeClass) {
+            if (themeClass === 'dark') { // Changed from 'dark-mode' to 'dark'
+                body.classList.add('dark'); // Use 'dark' class
+                themeToggle.textContent = '☀️'; // Sun icon for dark mode
+                themeToggle.setAttribute('aria-pressed', 'true');
+            } else { // 'light' or empty string from localStorage
+                body.classList.remove('dark'); // Remove 'dark' class
+                themeToggle.textContent = '🌙'; // Moon icon for light mode
+                themeToggle.setAttribute('aria-pressed', 'false');
+            }
         }
+
+        // Apply theme on page load
+        if (savedTheme === 'dark') { // If user explicitly saved dark mode
+            applyTheme('dark');
+        } else if (savedTheme === 'light') { // If user explicitly saved light mode
+            applyTheme('light');
+        } else { // If no preference saved, use system preference
+            applyTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+        }
+
+        // Event listener for toggle button click
+        themeToggle.addEventListener('click', () => {
+            const isDark = body.classList.toggle('dark'); // Toggle 'dark' class
+            localStorage.setItem('theme', isDark ? 'dark' : 'light'); // Save preference as 'dark' or 'light'
+            themeToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+            themeToggle.textContent = isDark ? '☀️' : '🌙'; // Update icon
+        });
     }
 
-    if (currentTheme) {
-        applyTheme(currentTheme);
-    } else {
-        applyTheme(prefersDarkScheme.matches ? 'dark' : 'light');
-    }
 
-    toggleBtn.addEventListener('click', () => {
-        const isDark = document.body.classList.toggle('dark');
-        toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-} else {
-    // Optional: console.log for debugging if the button is missing
-    // console.log("Toggle theme button not found on this page. Skipping theme toggle logic.");
-}
-
-
-// image-zoom.js (This part should now work after the fix above)
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the modal, image, and caption elements
+    // --- Image Modal Logic ---
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('img01');
+    const modalCaption = document.getElementById('modalCaption');
     const closeButton = document.querySelector('.close-button');
 
     // Add a check to ensure the modal elements exist before proceeding
-    if (!modal || !modalImg || !closeButton) {
-        console.warn("Modal elements not found. Image zoom functionality will not work on this page.");
+    if (!modal || !modalImg || !closeButton || !modalCaption) {
+        // This is expected on pages like eforto.html where images were removed, so no console.warn needed.
         return; // Exit if modal elements are missing
     }
 
-    // Get all images that should be clickable
     const images = document.querySelectorAll('.story-block img');
 
-    // Loop through each image and add a click event listener
     images.forEach(img => {
         img.addEventListener('click', function() {
-            modal.style.display = 'flex'; // Use flex to center content
-            modalImg.src = this.getAttribute('data-original') || this.src; 
+            modal.style.display = 'flex';
+            modalImg.src = this.getAttribute('data-original') || this.src;
+            const captionText = this.nextElementSibling ? this.nextElementSibling.textContent : this.alt;
+            modalCaption.textContent = captionText;
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
         });
     });
 
-    // When the user clicks on the close button (x), close the modal
     closeButton.addEventListener('click', function() {
         modal.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
     });
 
-    // When the user clicks anywhere outside of the modal content, close it
     modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
+        if (event.target === modal || event.target === modalImg) { // Also close if modal image itself is clicked
             modal.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
         }
     });
 
-    // Optional: Close modal with Escape key
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && modal.style.display === 'flex') {
             modal.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
         }
     });
 });
