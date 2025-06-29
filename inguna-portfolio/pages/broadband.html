@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZ0RQ0MQS8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-BZ0RQ0MQS8');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Broadband Onboarding Flow – Case Study</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="icon" href="../favicon.png" type="image/png" />
+    <script defer src="../script.js"></script>
+    <meta name="description" content="Case study on optimizing a complex, multi-step broadband signup flow to reduce drop-off and improve satisfaction." />
+    <meta name="color-scheme" content="light dark" />
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <main class="case-study" id="main-content">
+        <nav class="breadcrumb">
+            <p><a href="../index.html">← Back to Home</a></p>
+            <p><strong>Inguna Eihentāle</strong> – UX Researcher & Designer</p>
+            <button id="theme-toggle" aria-pressed="false" aria-label="Toggle light and dark mode">🌙</button>
+        </nav>
+
+        <header>
+            <h1>Broadband Signup Flow</h1>
+            <p class="subtitle">Reducing drop-off and improving customer satisfaction during signup</p>
+        </header>
+
+        <section class="key-moments">
+            <h2 tabindex="0">Key Moments</h2>
+            <ul>
+                <li>Overcoming complexity in a 10+ screen flow, including identity authentication.</li>
+                <li>Optimizing placement and microcopy for strong authentication to build user trust.</li>
+                <li>Strategically integrating upsells that users found valuable, not intrusive.</li>
+                <li>Designing and testing progress visualization for dynamically changing steps.</li>
+            </ul>
+        </section>
+
+        <section class="tldr">
+            <h2 tabindex="0">Tl;Dr</h2>
+            <p>A UX optimization of a complex, multi-step signup flow for broadband plans reduced drop-off by 9% and decreased support requests. Optimizing this flow was a long-term, iterative focus for me as part of the UX Research team. </p>
+        </section>
+
+        <section class="story">
+            <h2>The Story</h2>
+            
+            <div class="story-block"> 
+                <div>
+                    <h3 tabindex="0">Tackling a Complex, Evolving Signup Journey</h3>
+                    <p>The broadband signup flow was a critical, long-term focus for our product. It was a inherently <strong>long and complex process, spanning approximately 10 unique screens</strong> with several variants—covering everything from initial address checks and plan selection to numerous upsells and the final contract signing. The product itself was highly dynamic, with constant changes to bundles, legal requirements, pricing, availability, and service types. Our continuous goal was to ensure these changes were implemented without increasing customer drop-off or confusion.</p>
+                    <p>As a core member of the UX Research team, I regularly collaborated with stakeholders in quarterly meetings to monitor KPIs and identify user pain points. Through in-depth<strong> analytics reviews, heatmap analysis, and customer service feedback</strong>, we consistently observed high abandonment rates at various stages, indicating significant user friction.</p>
+                </div>
+                <figure>
+                    <img src="../images/conceptual-flow-complexity.png" alt="Conceptual diagram showing a multi-screen signup flow with key friction points highlighted." data-original="../images/conceptual-flow-complexity.png" />
+                    <figcaption class="image-caption">Conceptual diagram illustrating the initial complexity and identified pain points in the signup flow.</figcaption>
+                </figure> 
+            </div>
+
+            <div class="story-block reverse"> 
+                <div>
+                    <h3 tabindex="0">Navigating Sensitive Authentication & Upsells</h3>
+                    <p>A major challenge was the mandated integration of a <strong>strong authentication step </strong>to verify user identity and credit history. Early usability tests revealed a critical issue: users in Latvia, accustomed to bank-based authentication for contracts, frequently confused this identity check with the final signing of the contract itself, leading to significant caution and confusion. My team and I <strong>experimented extensively with both the placement within the flow and the microcopy/content of the authentication page</strong> to integrate it in a non-threatening and clear manner, building trust rather than apprehension.</p>
+                    <p>Similarly, we tackled the challenge of <strong>upselling add-on products</strong>. Initial attempts often confused users or felt intrusive. Through iterative testing, we discovered the optimal placement within the flow and refined the accompanying microcopy. This allowed us to strategically present relevant upsells in a way that many users actually <strong>perceived as helpful and valuable </strong>, rather than just sales tactics.</p>
+                </div>
+                <figure>
+                    <img src="../images/representative-authentication-screens.png" alt="Representative wireframes or mockups showing different placements and content for strong authentication." data-original="../images/representative-authentication-screens.png" />
+                    <figcaption class="image-caption">Representative designs exploring placement and microcopy for the strong authentication step.</figcaption>
+                </figure> 
+            </div>
+
+            <div class="story-block"> 
+                <div>
+                    <h3 tabindex="0">Designing for Clarity: Progress Visualization</h3>
+                    <p>Given the flow's length, a clear progress indicator was essential. We thoroughly <strong>tested various designs for a progress visualization bar</strong>. This included experimenting with:
+                    <ul>
+                        <li><strong>Overall length visualization</strong> (one continuous bar vs. separate bars for each step)</li>
+                        <li><strong>Inclusion or exclusion of numerical step counts</strong></li>
+                        <li><strong>Different titles for each step</strong> to enhance clarity</li>
+                    </ul>
+                    A particularly tricky aspect was managing <strong>dynamic step counts</strong>; depending on a user's choices, the total number of steps could change mid-flow. We designed and tested solutions to communicate these changes clearly, preventing user disorientation.</p>
+                </div>
+                <figure>
+                    <img src="../images/representative-progress-bar-iterations.png" alt="Illustrative examples of different progress bar designs tested (single vs. segmented, with/without numbers)." data-original="../images/representative-progress-bar-iterations.png" />
+                    <figcaption class="image-caption">Illustrative examples of progress bar iterations, testing different visual approaches.</figcaption>
+                </figure> 
+            </div>
+
+            <div class="story-block reverse">    
+                <div>
+                    <h3 tabindex="0">Rigorous, Iterative Usability Research Methodology</h3>
+                    <p>Our methodology involved a continuous cycle of identifying pain points, prototyping, and testing. My colleague and I, as a two-person UX research team, would save up multiple critical friction points or desired changes. For each round, we <strong>created interactive prototypes based on best practices and heuristics, meticulously utilizing our existing component library</strong> to minimize design debt.</p>
+                    <p>We typically developed <strong>two design variants for each flow</strong> to cover as much ground as possible per testing round. We then meticulously crafted<strong> detailed test scenarios, defined specific tasks, and identified key discussion points</strong> for each usability test. Participants were recruited for <strong>hour-long moderated 'think-aloud' video calls</strong>, which were recorded for later analysis.</p>
+                    <p>Post-testing, we thoroughly reviewed and <strong>coded the video recordings</strong>, extracting key highlights and user quotes to present to stakeholders. This comprehensive analysis formed the basis for our presentations, directly addressing stakeholder questions like "Would feature X help fix the drop-off?" Our research consistently provided data-driven answers, validating proposed solutions or guiding the next iteration of tests, ensuring the flow was always optimized without necessitating revolutionary overhauls.</p>
+                </div>
+                <figure>
+                    <img src="../images/representative-test-setup.png" alt="Conceptual diagram of the usability testing process: prototype, scenario, moderated session, analysis." data-original="../images/representative-test-setup.png" />
+                    <figcaption class="image-caption">Conceptual overview of the iterative usability testing methodology employed.</figcaption>
+                </figure> 
+            </div>
+        </section>
+
+        <section class="result">
+            <h2 tabindex="0">Results</h2>
+            <ul>
+                <li>✅ 9% decrease in abandonment</li>
+                <li>📉 15% drop in related support calls</li>
+                <li>⭐ Improved onboarding satisfaction</li>
+            </ul>
+        </section>
+
+        <div class="case-nav">
+            <a href="IVR-calls.html" class="button nav-button next">Next: IVR optimization →</a>
+        </div>
+    </main>
+
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true">
+        <span class="close-button" aria-label="Close image dialog">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="modalCaption" class="modal-caption"></div>
+    </div>
+
+</body>
+</html>
