@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Intelligence Engine - Case Study</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="icon" href="../favicon.png" type="image/png" />
+    <script defer src="../script.js"></script>
+    <meta name="description" content="Case study: Architecting a unified customer intelligence engine at TET - consolidating journey data across Marketing, Sales, and Support using a 4-tier knowledge framework and AI agents." />
+    <meta name="color-scheme" content="light dark" />
+    <style>
+        /* Pyramid diagram */
+        .pyramid-wrap {
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            width: 100%;
+        }
+
+        .pyramid-tier {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.9rem 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+            transition: background 0.2s;
+            margin-bottom: 4px;
+        }
+
+        .pyramid-tier .tier-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .pyramid-tier .tier-desc {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        .tier-1 { background: #25553E; color: #fff; width: 100%; }
+        .tier-2 { background: #3a7a5a; color: #fff; width: 90%; }
+        .tier-3 { background: #5a9e7a; color: #fff; width: 78%; }
+        .tier-4 { background: #8dcfaa; color: #1a3d2b; width: 65%; }
+
+        body.dark .tier-1 { background: #1a3d2b; color: #d0f0e0; }
+        body.dark .tier-2 { background: #22512e; color: #b8e8cc; }
+        body.dark .tier-3 { background: #2d6b3e; color: #a0d8b8; }
+        body.dark .tier-4 { background: #3a8a52; color: #d0f0e0; }
+
+        /* Agent cards */
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .agent-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.1rem;
+        }
+
+        body.dark .agent-card {
+            border-color: #333;
+        }
+
+        .agent-card .agent-icon {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .agent-card h4 {
+            margin: 0 0 0.4rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .agent-card p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        body.dark .agent-card p {
+            color: #aaa;
+        }
+
+        /* Tags */
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .tag {
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            color: #444;
+            background: transparent;
+        }
+
+        body.dark .tag {
+            border-color: #444;
+            color: #bbb;
+        }
+
+        /* Callout box */
+        .callout {
+            border-left: 3px solid #25553E;
+            padding: 0.8rem 1.2rem;
+            margin: 1.5rem 0;
+            background: #f5faf7;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95rem;
+        }
+
+        body.dark .callout {
+            background: #1a2e22;
+            border-color: #3a7a5a;
+        }
+
+        .callout strong {
+            color: #25553E;
+        }
+
+        body.dark .callout strong {
+            color: #8dcfaa;
+        }
+
+        /* Inline metric highlights */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-box {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        body.dark .metric-box {
+            border-color: #333;
+        }
+
+        .metric-box .metric-num {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #25553E;
+            display: block;
+        }
+
+        body.dark .metric-box .metric-num {
+            color: #8dcfaa;
+        }
+
+        .metric-box .metric-label {
+            font-size: 0.82rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        body.dark .metric-box .metric-label {
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <main class="case-study" id="main-content">
+        <nav class="breadcrumb">
+            <p><a href="../index.html">← Back to Home</a></p>
+            <p><strong>Inguna Eihentāle</strong> - UX Researcher & Designer</p>
+            <button id="theme-toggle" aria-pressed="false" aria-label="Toggle light and dark mode">🌙</button>
+        </nav>
+
+        <header>
+            <h1>Customer Intelligence Engine</h1>
+            <p class="subtitle">Architecting a unified source of truth for customer journey data - from zero budget to an AI-powered knowledge ecosystem.</p>
+        </header>
+
+        <div class="tag-row">
+            <span class="tag">CX Strategy</span>
+            <span class="tag">Information Architecture</span>
+            <span class="tag">Journey Mapping</span>
+            <span class="tag">AI Agents</span>
+            <span class="tag">Cross-functional</span>
+            <span class="tag">TET</span>
+        </div>
+
+        <section class="tldr">
+            <h2 tabindex="0">Tl;Dr</h2>
+            <p>As the first person to tackle this problem at TET, I identified that customer journey data was fragmented across Marketing, Sales, and Support - with no shared language, no central hub, and no budget. I designed and deployed a 4-tier knowledge architecture (the "Intelligence Pyramid"), integrated a cross-linked toolkit across Figjam, Figma, and XWiki, and pioneered three custom AI agents on our internal LLM infrastructure to automate insight generation at scale.</p>
+        </section>
+
+        <section class="story">
+            <h2>The Story</h2>
+
+            <div class="story-block">
+                <div>
+                    <h3 tabindex="0">The Problem: Three Teams, Zero Shared Truth</h3>
+                    <p>Marketing tracked acquisition funnels. Sales tracked pipeline stages. Support tracked ticket categories. None of it talked to each other. As a result, decisions were made on partial pictures - and the customer experience suffered for it.</p>
+                    <p>I was brought in as the pioneer for this initiative at TET, tasked with establishing a framework that could consolidate insights and enable cross-departmental decision-making. The constraint: zero dedicated budget.</p>
+
+                    <div class="callout">
+                        <strong>The core question I started with:</strong> If a customer calls support today, do we know what journey they've been on - and why they're frustrated?
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-block">
+                <div>
+                    <h3 tabindex="0">The Strategy: The Intelligence Pyramid</h3>
+                    <p>Rather than trying to fix everything at once, I designed a hierarchical information architecture - four tiers, each feeding the one above it, moving from raw evidence up to strategic clarity.</p>
+                </div>
+            </div>
+
+            <div class="pyramid-wrap" aria-label="4-tier Intelligence Pyramid diagram">
+                <div class="pyramid-tier tier-1">
+                    <span class="tier-label">Level 1 · Strategic</span>
+                    <span class="tier-desc">Master lifecycle maps - end-to-end customer journey visibility</span>
+                </div>
+                <div class="pyramid-tier tier-2">
+                    <span class="tier-label">Level 2 · Analytical</span>
+                    <span class="tier-desc">Segmented journey maps - pain points and friction by persona</span>
+                </div>
+                <div class="pyramid-tier tier-3">
+                    <span class="tier-label">Level 3 · Operational</span>
+                    <span class="tier-desc">Service blueprints - internal systems mapped to touchpoints</span>
+                </div>
+                <div class="pyramid-tier tier-4">
+                    <span class="tier-label">Level 4 · Evidence</span>
+                    <span class="tier-desc">Centralized library - raw data, research, and technical artifacts</span>
+                </div>
+            </div>
+
+            <div class="story-block">
+                <div>
+                    <h3 tabindex="0">The Implementation: A Cross-Linked Toolkit</h3>
+                    <p>I integrated three tools that the teams were already using - Figjam for visual strategy, Figma for UX artifacts, and XWiki as the operational knowledge base - into a cohesive, searchable ecosystem. The key was making them talk to each other.</p>
+                    <ul>
+                        <li><strong>Cross-linking strategy:</strong> Visual journey maps in Figjam were directly linked to technical process flows and research evidence in XWiki, so any stakeholder could trace from "user insight" down to "system log" without asking anyone.</li>
+                        <li><strong>Standardization:</strong> I created templates, naming conventions, and governance rules to keep the data consistent, clean, and ready for future AI ingestion.</li>
+                        <li><strong>Repository syncs:</strong> Regular cross-team sessions ensured that UX research findings were continuously fed back into the operational blueprints - closing the loop between discovery and implementation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="story-block">
+                <div>
+                    <h3 tabindex="0">The Technical Edge: AI Agents at Scale</h3>
+                    <p>Once the framework was in place and the data was structured, I pioneered the use of custom AI agents on TET's internal LLM infrastructure to remove the manual bottleneck of analysis. I designed three specialized agents, each with a distinct role:</p>
+                </div>
+            </div>
+
+            <div class="agent-grid">
+                <div class="agent-card">
+                    <div class="agent-icon">🗺️</div>
+                    <h4>Journey Mapping Agent</h4>
+                    <p>Generates end-to-end journey maps from unstructured customer feedback automatically, with standardized visualization across all segments.</p>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-icon">🔍</div>
+                    <h4>Pain Point Discovery Agent</h4>
+                    <p>Performs pattern recognition across support logs and feedback to surface friction points before they become systemic - proactive, not reactive.</p>
+                </div>
+                <div class="agent-card">
+                    <div class="agent-icon">⚙️</div>
+                    <h4>Data Synthesis Agent</h4>
+                    <p>Processes disparate data streams from .xlsx reports and maps quantitative inputs directly to qualitative journey stages.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="result">
+            <h2 tabindex="0">Results</h2>
+
+            <div class="metrics">
+                <div class="metric-box">
+                    <span class="metric-num">4</span>
+                    <div class="metric-label">Departments aligned under one framework</div>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-num">3</span>
+                    <div class="metric-label">AI agents deployed to automate insight generation</div>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-num">0€</span>
+                    <div class="metric-label">Budget - built entirely with existing tools and infrastructure</div>
+                </div>
+            </div>
+
+            <ul>
+                <li>✅ <strong>Single source of truth</strong> established for the first time across Marketing, Sales, and Support</li>
+                <li>📉 <strong>Reduced time-to-insight</strong> significantly by consolidating disparate data sources into one navigable hub</li>
+                <li>🤝 <strong>Shared language</strong> for customer journeys adopted across the entire organization</li>
+                <li>🔮 <strong>Future-proofed infrastructure</strong> - hierarchical, tagged data ready for AI-driven predictive analysis</li>
+                <li>🤖 <strong>Manual analysis burden removed</strong> through AI agent automation, scaling the team's capacity without adding headcount</li>
+            </ul>
+        </section>
+
+        <div class="case-nav">
+            <a href="broadband.html" class="button nav-button next">Next: Broadband Onboarding Flow →</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>2026 Inguna Eihentāle</p>
+        </div>
+    </footer>
+
+    <div id="imageModal" class="modal" role="dialog" aria-modal="true">
+        <span class="close-button" aria-label="Close image dialog">&times;</span>
+        <img class="modal-content" id="img01" alt="">
+        <div id="modalCaption" class="modal-caption"></div>
+    </div>
+</body>
+</html>

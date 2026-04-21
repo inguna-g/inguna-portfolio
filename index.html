@@ -6,18 +6,129 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-BZ0RQ0MQS8');
 </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Inguna Eihentāle - UX Designer & Researcher</title>
+    <title>Inguna Eihentāle - UX Research & Design</title>
     <link rel="stylesheet" href="style.css" />
     <script defer src="script.js"></script>
     <script defer src="analytics.js"></script>
     <meta name="description" content="Portfolio of Inguna Eihentāle, UX designer and researcher. Case studies, contact info, and UX philosophy." />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="favicon.png" type="image/png" />
+    <style>
+        /* Hero intro line */
+        .hero-tagline {
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.45;
+            margin: 2.5rem 0 0.5rem;
+            color: inherit;
+            max-width: 600px;
+        }
+
+        .hero-tagline em {
+            font-style: normal;
+            color: #25553E;
+        }
+
+        body.dark .hero-tagline em {
+            color: #8dcfaa;
+        }
+
+        /* Work cards */
+        article.case-study {
+            border: 0.5px solid #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s, background 0.2s;
+            background: transparent;
+        }
+
+        body.dark article.case-study {
+            border-color: #2e2e2e;
+        }
+
+        article.case-study:hover {
+            border-color: #aaa;
+            background: #fafafa;
+        }
+
+        body.dark article.case-study:hover {
+            border-color: #555;
+            background: #1a1a1a;
+        }
+
+        article.case-study a {
+            display: block;
+            padding: 1.1rem 1.3rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        article.case-study a:visited {
+            color: inherit;
+        }
+
+        article.case-study h3 {
+            margin: 0 0 0.3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: inherit;
+        }
+
+        article.case-study p {
+            margin: 0 0 0.7rem;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        body.dark article.case-study p {
+            color: #aaa;
+        }
+
+        /* Tag row inside cards */
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.1rem;
+        }
+
+        .card-tag {
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 0.5px solid #ccc;
+            color: #555;
+        }
+
+        body.dark .card-tag {
+            border-color: #444;
+            color: #999;
+        }
+
+        /* Arrow on card hover */
+        .card-arrow {
+            float: right;
+            font-size: 0.9rem;
+            color: #bbb;
+            margin-left: 0.5rem;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        article.case-study:hover .card-arrow {
+            transform: translateX(3px);
+            color: #25553E;
+        }
+
+        body.dark article.case-study:hover .card-arrow {
+            color: #8dcfaa;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +142,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#work">Work</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <!--<li><a href="cv.html">CV</a></li> --> 
+                    <!--<li><a href="cv.html">CV</a></li> -->
                     <li><button id="theme-toggle" aria-pressed="false" aria-label="Toggle light and dark mode">🌙</button></li>
                 </ul>
             </nav>
@@ -39,46 +150,89 @@
     </header>
 
     <main id="maincontent" class="container" tabindex="-1">
-        <section id="about" tabindex="0">
-            <h2>About Me</h2>
-          <p>With nearly a decade in design, I've learned that my sweet spot is helping teams get to the heart of a problem. I'm a natural systems thinker, which means I tend to ask a lot of questions. Think of it like being a "mindhunter" for user experience, I dig deep to understand the "why" so we can avoid just scratching the surface.</p> 
-            <p>What truly drives me is achieving clarity, purpose, and measurable outcomes. I'm at my best when I can help teams challenge assumptions and create solutions that truly make a difference for people</p>
-            <p>Design is messy at first, but there’s always a structure behind it. That’s what I work toward - systems that support good decisions and don’t collapse under change.</p>
-            <figure class="image-with-desc">
-                <img src="images/design-squiggle.png" alt="Design squiggle by Damien Newman" />
-                <figcaption><a href="https://www.researchgate.net/figure/Damien-Newmans-2010-Process-of-design-squiggle-captures-the-complexity-of-the_fig1_319561659">Source: Daniel Newman's Design Squiggle.</a></figcaption>
-        </section>
+
+        <p class="hero-tagline">I help teams find the <em>real problem</em> - then build something that actually solves it.</p>
 
         <section id="work" tabindex="0">
             <h2>Selected Work</h2>
 
             <article class="case-study">
-              <a href="pages/broadband.html" rel="noopener noreferrer">  
-              <h3>Broadband Onboarding Flow</h3>
-                <p>Reduced abandoned flows, lowered customer service calls, increased long-term customer satisfaction, and simplified signup for broadband and bundle customers.</p>
+                <a href="pages/cjm.html" rel="noopener noreferrer">
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                    <h3>Customer Intelligence Engine</h3>
+                    <p>Architected a unified 4-tier knowledge framework and AI agent pipeline to consolidate customer journey data across Marketing, Sales, and Support - with zero budget.</p>
+                    <div class="card-tags">
+                        <span class="card-tag">CX Strategy</span>
+                        <span class="card-tag">Information Architecture</span>
+                        <span class="card-tag">AI Agents</span>
+                        <span class="card-tag">TET</span>
+                    </div>
+                </a>
+            </article>
+
+            <article class="case-study">
+                <a href="pages/broadband.html" rel="noopener noreferrer">
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                    <h3>Broadband Onboarding Flow</h3>
+                    <p>Reduced abandoned flows, lowered customer service calls, and simplified signup for broadband and bundle customers.</p>
+                    <div class="card-tags">
+                        <span class="card-tag">UX Research</span>
+                        <span class="card-tag">Usability Testing</span>
+                        <span class="card-tag">Telecom</span>
+                    </div>
                 </a>
             </article>
 
             <article class="case-study">
                 <a href="pages/IVR-calls.html" rel="noopener noreferrer">
-                <h3>Optimizing existing IVR</h3>
-                <p>Conducted audit of customer service calls, conducted pre and post tests, and proposed streamlined UX solutions reducing overhead and improving efficiency.</p>
-                </a>
-            </article>
-            
-            <article class="case-study">
-                <a href="pages/eforto.html" rel="noopener noreferrer">
-                  <h3>eForto - Grip Strength App</h3>
-                <p>Designing and validating an interactive prototype for a senior-friendly companion app for a medical device.</p>
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                    <h3>Optimizing existing IVR</h3>
+                    <p>Audited a year of customer call data, ran pre/post card sorting tests, and redesigned the IVR tree - reducing misrouted calls by ~30%.</p>
+                    <div class="card-tags">
+                        <span class="card-tag">Research</span>
+                        <span class="card-tag">Card Sorting</span>
+                        <span class="card-tag">Service Design</span>
+                    </div>
                 </a>
             </article>
 
             <article class="case-study">
-              <a href="pages/edc.html" rel="noopener noreferrer">
-              <h3>UniWeb EDC Platform</h3>
-              <p>Designed a SaaS Electronic Data Capture system for clinical trials, focusing on usability and data integrity.</p>
-              </a>
+                <a href="pages/eforto.html" rel="noopener noreferrer">
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                    <h3>eForto - Grip Strength App</h3>
+                    <p>Designed and validated a Dutch-language prototype for a clinically-aligned senior health app, tested with geriatric patients.</p>
+                    <div class="card-tags">
+                        <span class="card-tag">Prototyping</span>
+                        <span class="card-tag">Accessibility</span>
+                        <span class="card-tag">Healthcare</span>
+                    </div>
+                </a>
             </article>
+
+            <article class="case-study">
+                <a href="pages/edc.html" rel="noopener noreferrer">
+                    <span class="card-arrow" aria-hidden="true">→</span>
+                    <h3>UniWeb EDC Platform</h3>
+                    <p>Sole UX designer on a SaaS Electronic Data Capture system for clinical trials - built the design system and interactive prototypes from scratch.</p>
+                    <div class="card-tags">
+                        <span class="card-tag">Design Systems</span>
+                        <span class="card-tag">SaaS</span>
+                        <span class="card-tag">Clinical Trials</span>
+                    </div>
+                </a>
+            </article>
+
+        </section>
+
+        <section id="about" tabindex="0">
+            <h2>About Me</h2>
+            <p>I've spent nearly a decade turning "we have data but no idea what it means" into something teams can actually act on. I'm the person colleagues call when a spreadsheet has become a cry for help - I genuinely enjoy untangling it.</p>
+            <p>I type fast, but think slow (in a good way). I get quietly excited about statistics, SPSS, and data science in ways that probably say a lot about me. I'm not scared of technical complexity - I just need to understand it well enough to make it human.</p>
+            <p>I've been told my superpower is making messy information look inevitable in hindsight - clean, visual, and impossible to argue with. I'll take it.</p>
+            <figure class="image-with-desc">
+                <img src="images/design-squiggle.png" alt="Design squiggle by Damien Newman" />
+                <figcaption><a href="https://www.researchgate.net/figure/Damien-Newmans-2010-Process-of-design-squiggle-captures-the-complexity-of-the_fig1_319561659">Source: Damien Newman's Design Squiggle.</a></figcaption>
+            </figure>
         </section>
 
         <section id="contact" tabindex="0">
@@ -90,7 +244,7 @@
 
     <footer>
         <div class="container">
-            <p>2025 Inguna Eihentāle</p>
+            <p>2026 Inguna Eihentāle</p>
         </div>
     </footer>
 </body>
