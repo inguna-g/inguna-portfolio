@@ -1,4 +1,4 @@
-# Inguna Eihentāle - UX Researcher Portfolio
+# Inguna Eihentāle - Portfolio | UX | CX
 
 ## Overview
 
