@@ -534,3 +534,295 @@ body.dark .theme-toggle:hover {
   margin-bottom: 3rem;
   /* Space below the entire work section */
 }
+
+/* ============================================================
+   SHARED CASE STUDY COMPONENTS
+   (tags, callouts, metrics, hero, cards, pyramid, agents)
+   ============================================================ */
+
+/* Hero tagline — homepage */
+.hero-tagline {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.45;
+    margin: 2.5rem 0 0.5rem;
+    color: inherit;
+    max-width: 600px;
+}
+
+.hero-tagline em {
+    font-style: normal;
+    color: #25553E;
+}
+
+body.dark .hero-tagline em {
+    color: #8dcfaa;
+}
+
+/* Tag row */
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.5rem 0 1.5rem;
+}
+
+.tag {
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    color: #444;
+    background: transparent;
+}
+
+body.dark .tag {
+    border-color: #444;
+    color: #bbb;
+}
+
+/* Callout box */
+.callout {
+    border-left: 3px solid #25553E;
+    padding: 0.8rem 1.2rem;
+    margin: 1.5rem 0;
+    background: #f5faf7;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+}
+
+body.dark .callout {
+    background: #1a2e22;
+    border-color: #3a7a5a;
+}
+
+.callout strong {
+    color: #25553E;
+}
+
+body.dark .callout strong {
+    color: #8dcfaa;
+}
+
+/* Metric boxes */
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.metric-box {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+body.dark .metric-box {
+    border-color: #333;
+}
+
+.metric-box .metric-num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #25553E;
+    display: block;
+}
+
+body.dark .metric-box .metric-num {
+    color: #8dcfaa;
+}
+
+.metric-box .metric-label {
+    font-size: 0.82rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+body.dark .metric-box .metric-label {
+    color: #aaa;
+}
+
+/* Result list — no bullets, emoji only */
+.result ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Work cards — homepage */
+article.case-study {
+    border: 0.5px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s, background 0.2s;
+    background: transparent;
+}
+
+body.dark article.case-study {
+    border-color: #2e2e2e;
+}
+
+article.case-study:hover {
+    border-color: #aaa;
+    background: #fafafa;
+}
+
+body.dark article.case-study:hover {
+    border-color: #555;
+    background: #1a1a1a;
+}
+
+article.case-study a {
+    display: block;
+    padding: 1.1rem 1.3rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+article.case-study a:visited {
+    color: inherit;
+}
+
+article.case-study h3 {
+    margin: 0 0 0.3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: inherit;
+}
+
+article.case-study p {
+    margin: 0 0 0.7rem;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+body.dark article.case-study p {
+    color: #aaa;
+}
+
+/* Card tags */
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.1rem;
+}
+
+.card-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 0.5px solid #ccc;
+    color: #555;
+}
+
+body.dark .card-tag {
+    border-color: #444;
+    color: #999;
+}
+
+/* Card arrow */
+.card-arrow {
+    float: right;
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-left: 0.5rem;
+    transition: transform 0.2s, color 0.2s;
+}
+
+article.case-study:hover .card-arrow {
+    transform: translateX(3px);
+    color: #25553E;
+}
+
+body.dark article.case-study:hover .card-arrow {
+    color: #8dcfaa;
+}
+
+/* Intelligence Pyramid */
+.pyramid-wrap {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+}
+
+.pyramid-tier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.9rem 1.5rem;
+    border-radius: 6px;
+    text-align: center;
+    transition: background 0.2s;
+    margin-bottom: 4px;
+}
+
+.pyramid-tier .tier-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.pyramid-tier .tier-desc {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.tier-1 { background: #25553E; color: #fff; width: 100%; }
+.tier-2 { background: #3a7a5a; color: #fff; width: 90%; }
+.tier-3 { background: #5a9e7a; color: #fff; width: 78%; }
+.tier-4 { background: #8dcfaa; color: #1a3d2b; width: 65%; }
+
+body.dark .tier-1 { background: #1a3d2b; color: #d0f0e0; }
+body.dark .tier-2 { background: #22512e; color: #b8e8cc; }
+body.dark .tier-3 { background: #2d6b3e; color: #a0d8b8; }
+body.dark .tier-4 { background: #3a8a52; color: #d0f0e0; }
+
+/* AI Agent cards */
+.agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.agent-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.1rem;
+}
+
+body.dark .agent-card {
+    border-color: #333;
+}
+
+.agent-card .agent-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.agent-card h4 {
+    margin: 0 0 0.4rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.agent-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+body.dark .agent-card p {
+    color: #aaa;
+}
