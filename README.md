@@ -6,6 +6,10 @@ This is a minimalist, accessible, and performant personal website portfolio.
 
 ## Setup Instructions
 
+## Adding new case studies
+
+Remember to paste a new <url> block into the sitemap.xml file!
+
 ### Uploading to GitHub Pages
 
 1. Go to your GitHub repository (e.g. `inguna-portfolio`).
