@@ -1,5 +1,5 @@
 # Inguna Eihentāle - Portfolio | UX | CX
-
+https://inguna-g.github.io/inguna-portfolio/
 ## Overview
 
 This is a minimalist, accessible, and performant personal website portfolio.
